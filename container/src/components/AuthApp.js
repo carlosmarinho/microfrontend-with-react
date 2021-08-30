@@ -1,11 +1,11 @@
-import { mount } from 'marketing/MarketingApp';
+import { mount } from 'auth/AuthApp';
 import React, { useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom'
 
 export default () => {
   const ref = useRef(null);
   const history = useHistory();
-
+  // Container AuthApp.js
   useEffect(() => {
     const { onParentNavigate } = mount(ref.current, {
       initialPath: history.location.pathname,
@@ -15,6 +15,9 @@ export default () => {
         if( pathname !== nextPathname) {
           history.push(nextPathname)
         }
+      },
+      onSignIn: () => {
+        console.log("User signed in")
       }
     });
 
